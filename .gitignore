@@ -1,9 +1,12 @@
-#Ignore out directory
-out/*
+*.class
 
-#Ignore IntelliJ Local Folder
-#.idea/*
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-#Ignore vim swap files
-*.swp
+# Package Files #
+*.jar
+*.war
+*.ear
 
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
