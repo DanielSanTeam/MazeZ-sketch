@@ -1,0 +1,9 @@
+#Ignore out directory
+out/*
+
+#Ignore IntelliJ Local Folder
+#.idea/*
+
+#Ignore vim swap files
+*.swp
+
