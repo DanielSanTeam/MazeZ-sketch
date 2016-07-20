@@ -33,6 +33,20 @@ public class Config
 		return instance;
 	}
 
+	public void nextLevel()
+	{
+		++mCurrentLevel;
+		if(mCurrentLevel == maps.size())
+		{
+			--mCurrentLevel;
+		}
+	}
+
+	public Map getMap()
+	{
+		return maps.get(mCurrentLevel);
+	}
+
 	public Map getMap(int index)
 	{
 		return maps.get(index);

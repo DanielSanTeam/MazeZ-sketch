@@ -1,6 +1,7 @@
 package MazeZ.Engine;
 
 import MazeZ.Graphics.Drawable;
+import MazeZ.Graphics.Position;
 import MazeZ.Graphics.RenderWindow;
 
 import java.io.*;
@@ -14,7 +15,27 @@ public class Map extends GameObject implements Drawable
 {
 	private char mMapContent[][];
 
-	Map(String path)
+	static final char START_CHAR = '*';
+	static final char END_CHAR = '#';
+
+	public Map(Map m)
+	{
+		int x = m.mMapContent.length;
+		int y = m.mMapContent[0].length;
+		mMapContent = new char[x][y];
+
+		for(int v = 0; v < mMapContent[0].length; ++v)
+		{
+			for(int u = 0; u < mMapContent.length; ++u)
+			{
+				mMapContent[u][v] = m.mMapContent[u][v];
+			}
+		}
+
+		mPos = m.mPos;
+	}
+
+	public Map(String path)
 	{
 		File mapFile = new File(path);
 
@@ -65,7 +86,7 @@ public class Map extends GameObject implements Drawable
 		}
 	}
 
-	private char getChar(int x, int y)
+	char getChar(int x, int y)
 	{
 		try
 		{
@@ -75,6 +96,45 @@ public class Map extends GameObject implements Drawable
 		{
 			return ' ';
 		}
+	}
+
+	void setChar(int x, int y, char c)
+	{
+		try
+		{
+			mMapContent[x][y] = c;
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			// Do Nothing
+		}
+	}
+
+	public Position getStart()
+	{
+		return findChar(START_CHAR);
+	}
+
+	public Position getEnd()
+	{
+		return findChar(END_CHAR);
+	}
+
+	private Position findChar(char c)
+	{
+		for(int v = 0; v < mMapContent[0].length; ++v)
+		{
+			for(int u = 0; u < mMapContent.length; ++u)
+			{
+				if(mMapContent[u][v] == c)
+				{
+					return new Position(u, v);
+				}
+			}
+		}
+
+		// Char not found
+		return new Position(0,0);
 	}
 
 	@Override

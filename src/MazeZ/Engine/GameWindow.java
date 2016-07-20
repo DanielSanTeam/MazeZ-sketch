@@ -1,7 +1,5 @@
 package MazeZ.Engine;
 
-import MazeZ.Engine.Config;
-import MazeZ.Engine.Map;
 import MazeZ.Graphics.Position;
 import MazeZ.Graphics.RenderWindow;
 
@@ -59,28 +57,20 @@ public class GameWindow extends JPanel
 
 		this.add(displayContainer, BorderLayout.CENTER);
 
-		if(Config.getInstance().DEBUG)
-		{
-			JButton test = new JButton("TEST");
-			mControlSection.add(test);
-
-			test.addActionListener(new ActionListener()
-			{
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-					Map map = Config.getInstance().getMap(0);
-					mRenderWindow.draw(map);
-					mRenderWindow.display();
-					map.move(new Position(1, 1));
-				}
-			});
-		}
+		mControlSection.add(controls);
 	}
 
-	private class Controls extends JPanel
+	class Controls extends JPanel
 	{
-		JButton mUp, mDown, mLeft, mRight;
+		private JButton mUp, mDown, mLeft, mRight;
+
+		public void attach(Player player)
+		{
+			mUp.addActionListener(player.UP);
+			mDown.addActionListener(player.DOWN);
+			mLeft.addActionListener(player.LEFT);
+			mRight.addActionListener(player.RIGHT);
+		}
 
 		public Controls()
 		{
@@ -104,14 +94,4 @@ public class GameWindow extends JPanel
 			this.add(new JLabel());
 		}
 	}
-
-	//public void draw(Drawable drawable)
-	//{
-	//	mRenderWindow.draw(drawable);
-	//}
-
-	//public void display()
-	//{
-	//	mRenderWindow.display();
-	//}
 }

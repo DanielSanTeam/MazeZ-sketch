@@ -26,16 +26,36 @@ public class Position
 		this.y = pos.y;
 	}
 
-	public void add(Position pos)
+	public Position add(Position pos)
 	{
 		this.x += pos.x;
 		this.y += pos.y;
+
+		return this;
 	}
 
-	public void subtract(Position pos)
+	public static Position add(Position p1, Position p2)
+	{
+		Position result = new Position(p1);
+		result.add(p2);
+
+		return result;
+	}
+
+	public Position subtract(Position pos)
 	{
 		this.x -= pos.x;
 		this.y -= pos.y;
+
+		return this;
+	}
+
+	public static Position subtract(Position p1, Position p2)
+	{
+		Position result = new Position(p1);
+		result.subtract(p2);
+
+		return result;
 	}
 
 	@Override
@@ -57,5 +77,11 @@ public class Position
 		int result = x;
 		result = 31 * result + y;
 		return result;
+	}
+
+	@Override
+	public String toString()
+	{
+		return String.format("Position(%d,%d)", x, y);
 	}
 }
