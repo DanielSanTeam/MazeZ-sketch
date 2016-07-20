@@ -17,11 +17,14 @@ public class Config
 
 	private Config()
 	{
-		// Load map files
-		maps = new ArrayList<>();
-		maps.add(new Map("maps/MazeEddy.txt"));
 		mCurrentLevel = 0;
 		mDeathCount = 0;
+
+		maps = new ArrayList<>();
+
+		// Load map files
+		maps.add(new Map("maps/MazeEddy.txt"));
+		maps.add(new Map("maps/TestMaze.txt"));
 
 	}
 
