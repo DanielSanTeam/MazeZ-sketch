@@ -1,7 +1,9 @@
-package MazeZ.Graphics;
+package MazeZ.Engine;
 
 import MazeZ.Engine.Config;
 import MazeZ.Engine.Map;
+import MazeZ.Graphics.Position;
+import MazeZ.Graphics.RenderWindow;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -27,11 +29,17 @@ public class GameWindow extends JPanel
 
 	private RenderWindow mRenderWindow;
 
+	Controls controls;
+
 	public GameWindow(RenderWindow rw)
 	{
 		super();
 
+		// Grab reference
 		mRenderWindow = rw;
+
+		// Create Controls
+		controls = new Controls();
 
 		// Setup MazeZ.Engine UI
 		this.setLayout(new BorderLayout());
@@ -72,7 +80,7 @@ public class GameWindow extends JPanel
 
 	private class Controls extends JPanel
 	{
-		private JButton mUp, mDown, mLeft, mRight;
+		JButton mUp, mDown, mLeft, mRight;
 
 		public Controls()
 		{
