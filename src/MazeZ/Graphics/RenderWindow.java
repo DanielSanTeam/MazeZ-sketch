@@ -3,6 +3,8 @@ package MazeZ.Graphics;
 import MazeZ.Engine.Config;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 /**
  * Created by Eddy on 7/15/2016.
@@ -31,6 +33,15 @@ public class RenderWindow extends JTextArea
 
 		if(Config.getInstance().DEBUG)
 			System.out.printf("RenderWindow|\tx:%s y:%s%n", mRenderSpace.length, mRenderSpace[0].length);
+
+		final int DISPLAY_PADDING_LR = 8;
+		final int DISPLAY_PADDING_TB = 8;
+
+		this.setBackground(Color.BLACK);
+		this.setForeground(Color.GREEN);
+		this.setBorder(new EmptyBorder(DISPLAY_PADDING_TB, DISPLAY_PADDING_LR, DISPLAY_PADDING_TB, DISPLAY_PADDING_LR));
+		this.setEditable(false);
+		this.setFont(new Font("Courier New", Font.PLAIN, 18));
 	}
 
 	public int getRenderWidth()

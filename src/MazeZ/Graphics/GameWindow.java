@@ -27,9 +27,11 @@ public class GameWindow extends JPanel
 
 	private RenderWindow mRenderWindow;
 
-	public GameWindow()
+	public GameWindow(RenderWindow rw)
 	{
 		super();
+
+		mRenderWindow = rw;
 
 		// Setup MazeZ.Engine UI
 		this.setLayout(new BorderLayout());
@@ -45,15 +47,6 @@ public class GameWindow extends JPanel
 		displayContainer.setLayout(new GridLayout(1,1));
 		displayContainer.setBorder(new EmptyBorder(DISPLAY_MARGIN_TB, DISPLAY_MARGIN_LR, DISPLAY_MARGIN_TB, DISPLAY_MARGIN_LR));
 
-		final int DISPLAY_PADDING_LR = 8;
-		final int DISPLAY_PADDING_TB = 8;
-
-		mRenderWindow = new RenderWindow(50, 25);
-		mRenderWindow.setBackground(Color.BLACK);
-		mRenderWindow.setForeground(Color.GREEN);
-		mRenderWindow.setBorder(new EmptyBorder(DISPLAY_PADDING_TB, DISPLAY_PADDING_LR, DISPLAY_PADDING_TB, DISPLAY_PADDING_LR));
-		mRenderWindow.setEditable(false);
-		mRenderWindow.setFont(new Font("Courier New", Font.PLAIN, 18));
 		displayContainer.add(mRenderWindow);
 
 		this.add(displayContainer, BorderLayout.CENTER);
@@ -104,13 +97,13 @@ public class GameWindow extends JPanel
 		}
 	}
 
-	public void draw(Drawable drawable)
-	{
-		mRenderWindow.draw(drawable);
-	}
+	//public void draw(Drawable drawable)
+	//{
+	//	mRenderWindow.draw(drawable);
+	//}
 
-	public void display()
-	{
-		mRenderWindow.display();
-	}
+	//public void display()
+	//{
+	//	mRenderWindow.display();
+	//}
 }

@@ -1,6 +1,7 @@
 package MazeZ.Engine;
 
 import MazeZ.Graphics.GameWindow;
+import MazeZ.Graphics.RenderWindow;
 
 import javax.swing.*;
 
@@ -10,6 +11,7 @@ import javax.swing.*;
 public class Game extends JFrame
 {
 	private GameWindow mGameWindow;
+	private RenderWindow mRenderWindow;
 
 	public Game()
 	{
@@ -19,7 +21,10 @@ public class Game extends JFrame
 		this.setSize(600, 800);
 		this.setLocation(100, 100);
 
-		mGameWindow = new GameWindow();
+		// Create Render Window
+		mRenderWindow = new RenderWindow(50, 25);
+
+		mGameWindow = new GameWindow(mRenderWindow);
 		this.add(mGameWindow);
 	}
 
