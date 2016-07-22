@@ -31,9 +31,6 @@ public class RenderWindow extends JTextArea
 			}
 		}
 
-		if(Config.getInstance().DEBUG)
-			System.out.printf("RenderWindow|\tx:%s y:%s%n", mRenderSpace.length, mRenderSpace[0].length);
-
 		final int DISPLAY_PADDING_LR = 8;
 		final int DISPLAY_PADDING_TB = 8;
 
